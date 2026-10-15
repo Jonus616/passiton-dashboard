@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pass It On Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Archivo+Black&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#000D62;--navy2:#0A1A7A;--red:#F20023;--blue:#005CFF;--cyan:#6FF3F9;--gray:#F1F1F1;--white:#FFFFFF;--ink:#0B1020;--muted:#565C73;--line:#DADCE5;--disp:"Archivo","Archivo Black","Arial Black",Arial,sans-serif;color-scheme:light}
+*{box-sizing:border-box;border-radius:0}
+html,body{margin:0;padding:0;overflow-x:hidden}
+body{background:var(--gray);color:var(--ink);font-family:"Archivo",Arial,Helvetica,sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px 40px}
+.stripes{height:10px;background:linear-gradient(180deg,var(--red) 0 33.3%,var(--white) 33.3% 66.6%,var(--navy) 66.6% 100%)}
+.stripes.thin{height:6px}
+header.hero{background:var(--navy);color:var(--white);padding:0 0 28px;position:relative}
+.hero .in{max-width:1100px;margin:0 auto;padding:26px 16px 0}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);font-weight:700;display:flex;align-items:center;gap:10px}
+.eyebrow:before{content:"";width:24px;height:2px;background:var(--red);flex:none}
+h1{font-family:var(--disp);font-stretch:125%;font-variation-settings:"wdth" 125;font-size:40px;line-height:.92;margin:14px 0 12px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;overflow-wrap:break-word}
+h1 span{display:block;color:var(--cyan)}
+.sub{font-size:15px;color:#DDE1F7;margin:0 0 20px;max-width:640px}
+.count{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.stub,.kpi{position:relative;min-width:0;
+ -webkit-mask:radial-gradient(circle 8px at 0 0,#0000 98%,#000) top left,radial-gradient(circle 8px at 100% 0,#0000 98%,#000) top right,radial-gradient(circle 8px at 0 100%,#0000 98%,#000) bottom left,radial-gradient(circle 8px at 100% 100%,#0000 98%,#000) bottom right;
+ -webkit-mask-size:51% 51%;-webkit-mask-repeat:no-repeat;
+ mask:radial-gradient(circle 8px at 0 0,#0000 98%,#000) top left,radial-gradient(circle 8px at 100% 0,#0000 98%,#000) top right,radial-gradient(circle 8px at 0 100%,#0000 98%,#000) bottom left,radial-gradient(circle 8px at 100% 100%,#0000 98%,#000) bottom right;
+ mask-size:51% 51%;mask-repeat:no-repeat}
+.count .box{background:var(--navy2);padding:12px 10px 10px;min-width:0}
+.count .n{font-family:var(--disp);font-stretch:125%;font-variation-settings:"wdth" 125;font-size:24px;font-weight:900;color:var(--cyan);line-height:1;text-transform:uppercase;white-space:nowrap}
+.count .l{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#C9CEF0;font-weight:700;margin-top:10px;padding-top:8px;border-top:2px dashed rgba(255,255,255,.35)}
+.legs{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:16px;background:rgba(255,255,255,.14);border-top:2px solid var(--red)}
+.leg{padding:10px 10px 12px;background:var(--navy);font-size:13px;color:#E4E7F7}
+.leg b{display:block;font-family:var(--disp);font-stretch:125%;font-variation-settings:"wdth" 125;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:900;margin-bottom:2px}
+.grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
+.card{background:var(--white);border-top:3px solid var(--red);padding:20px 16px;min-width:0}
+.card.dark{background:var(--navy);color:var(--white)}
+.card h2{margin:0 0 6px;font-family:var(--disp);font-stretch:125%;font-variation-settings:"wdth" 125;font-size:22px;line-height:1;text-transform:uppercase;color:var(--navy);font-weight:900;overflow-wrap:break-word}
+.card.dark h2{color:var(--white)}
+.card .num{display:flex;align-items:center;gap:8px;font-family:"Archivo",Arial,sans-serif;font-stretch:100%;font-variation-settings:"wdth" 100;font-size:11px;font-weight:700;letter-spacing:.22em;color:var(--red);margin-bottom:10px}
+.card .num:after{content:"SECTION";color:var(--muted);letter-spacing:.22em}
+.card.dark .num{color:var(--cyan)}.card.dark .num:after{color:#AEB4DA}
+.card p.d{margin:0 0 14px;color:var(--muted);font-size:14px}
+.card.dark p.d{color:#C9CEF0}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.kpi{background:var(--gray);padding:12px 12px 10px}
+.kpi .v{font-family:var(--disp);font-stretch:125%;font-variation-settings:"wdth" 125;font-size:22px;font-weight:900;color:var(--navy);line-height:1.05;word-break:break-word}
+.kpi.hot .v{color:var(--red)}
+.kpi .k{font-size:10px;text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:var(--muted);margin-top:10px;padding-top:8px;border-top:2px dashed #C3C7D4}
+.card.dark .kpi{background:var(--navy2)}
+.card.dark .kpi .v{color:var(--cyan);font-size:26px}
+.card.dark .kpi.hot .v{color:var(--white)}
+.card.dark .kpi.hot{box-shadow:inset 0 3px 0 var(--red)}
+.card.dark .kpi .k{color:#C9CEF0;border-top-color:rgba(255,255,255,.3)}
+.big{font-size:44px;font-weight:900;color:var(--red);line-height:1}
+.chart{position:relative;height:260px;width:100%}
+.toggle{display:flex;gap:0;margin-bottom:14px;border:2px solid var(--white)}
+.toggle button{flex:1;padding:11px 0;border:0;border-right:2px solid var(--white);background:transparent;color:var(--white);font-weight:900;text-transform:uppercase;letter-spacing:.14em;font-size:13px;cursor:pointer;font-family:var(--disp);font-stretch:125%;font-variation-settings:"wdth" 125}
+.toggle button:last-child{border-right:0}
+.toggle button.on{background:var(--red);color:var(--white)}
+.toggle button:focus-visible{outline:2px solid var(--cyan);outline-offset:-4px}
+.sl{margin:10px 0 16px}
+.sl label{display:flex;justify-content:space-between;gap:8px;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.12em;margin-bottom:4px}
+.sl label span{color:var(--red);font-family:var(--disp);font-stretch:125%;font-variation-settings:"wdth" 125;font-size:15px;font-weight:900;letter-spacing:0}
+input[type=range]{width:100%;accent-color:var(--red)}
+.note{font-size:12px;color:var(--muted);background:var(--gray);padding:10px 12px;margin-top:10px;border-left:3px solid var(--navy)}
+.card.dark .note{background:var(--navy2);color:#C9CEF0;border-left-color:var(--cyan)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:7px 4px;border-bottom:1px solid var(--line)}
+th{color:var(--navy);font-size:10px;text-transform:uppercase;letter-spacing:.14em;border-bottom:2px solid var(--navy)}
+td.r,th.r{text-align:right}
+ol.src{padding-left:22px;font-size:13px;margin:0}
+ol.src li{margin-bottom:7px;word-break:break-word}
+ol.src li::marker{color:var(--red);font-weight:900}
+.tag{display:inline-block;background:var(--red);color:var(--white);font-size:10px;font-weight:700;padding:2px 6px;text-transform:uppercase;letter-spacing:.14em}
+footer.foot{background:var(--navy);color:#C9CEF0;margin-top:24px}
+footer.foot .in{max-width:1100px;margin:0 auto;padding:18px 16px 22px;font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:700}
+footer.foot b{color:var(--white)}
+@media (min-width:800px){
+ h1{font-size:72px}
+ .grid{grid-template-columns:1fr 1fr}
+ .span2{grid-column:1 / -1}
+ .kpis.five{grid-template-columns:repeat(5,1fr)}
+ .legs{grid-template-columns:repeat(4,1fr)}
+ .count{max-width:560px}
+ .count .n{font-size:36px}
+ .card.dark .kpi .v{font-size:32px}
+ .chart{height:300px}
+ .card{padding:24px}
+}
+</style>
+</head>
+<body>
+
+
+
+<header class="hero"><div class="stripes"></div><div class="in">
+ <div class="eyebrow">U.S. Soccer case competition 2026</div>
+ <h1>Pass It On: <span>the live model</span></h1>
+ <p class="sub">The 100-Day Relay to Brazil 2027. Momentum after WC26 decays unless someone takes the handoff. Relay runs Mar 16 to Jun 23, 2027; the Women's World Cup kicks off Jun 24.</p>
+ <div class="count">
+  <div class="box stub"><div class="n" id="cdDays">100</div><div class="l" id="cdLbl">Relay days</div></div>
+  <div class="box stub"><div class="n">Mar 16</div><div class="l">Leg 1 starts, 2027</div></div>
+  <div class="box stub"><div class="n">Jun 24</div><div class="l">WWC 2027 kickoff</div></div>
+ </div>
+ <div class="legs">
+  <div class="leg"><b>Leg 1</b>Her First Whistle: girls' program, Atlanta then national</div>
+  <div class="leg"><b>Leg 2</b>The Handoff: creator relay for Female Gen Z</div>
+  <div class="leg"><b>Leg 3</b>Kotex: new feminine care partner</div>
+  <div class="leg"><b>Leg 4</b>Coca-Cola Pass It On activation</div>
+ </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+
+<section class="card">
+ <h2><span class="num">01</span>Momentum half-life</h2>
+ <p class="d">USWNT Wikipedia daily views after the 2019 final vs an exponential decay fit.</p>
+ <div class="kpis">
+  <div class="kpi hot"><div class="v" id="hlV">4.3 days</div><div class="k">Half-life</div></div>
+  <div class="kpi"><div class="v" id="hl90">14 days</div><div class="k">Until 90% of the bump is gone</div></div>
+ </div>
+ <div class="chart"><canvas id="cHL"></canvas></div>
+ <div class="note" id="hlNote"></div>
+</section>
+
+<section class="card">
+ <h2><span class="num">02</span>The broadcast proof</h2>
+ <p class="d">Public data: kickoff time decides the audience. The WWC final in a U.S.-friendly window matters.</p>
+ <div class="kpis">
+  <div class="kpi hot"><div class="v">66.4M</div><div class="k">WC26 final, U.S. viewers, FOX plus Telemundo</div></div>
+  <div class="kpi"><div class="v">544,516</div><div class="k">Fans at Atlanta's 8 WC26 matches</div></div>
+ </div>
+ <div class="chart"><canvas id="cTV"></canvas></div>
+</section>
+
+<section class="card span2 dark">
+ <h2><span class="num">03</span>Scenario explorer</h2>
+ <p class="d">Tap a case. Every number comes from the Excel model, FY2027 to FY2029.</p>
+ <div class="toggle" id="tog">
+  <button data-s="bear">Bear</button><button data-s="base" class="on">Base</button><button data-s="bull">Bull</button>
+ </div>
+ <div class="kpis five">
+  <div class="kpi hot"><div class="v" id="kRev">-</div><div class="k">3-yr incremental revenue</div></div>
+  <div class="kpi"><div class="v" id="kPart">-</div><div class="k">Feminine care partner, 3-yr</div></div>
+  <div class="kpi"><div class="v" id="kCoke">-</div><div class="k">Coca-Cola, 3-yr</div></div>
+  <div class="kpi"><div class="v" id="kFol">-</div><div class="k">New followers</div></div>
+  <div class="kpi"><div class="v" id="kViews">-</div><div class="k">Relay views</div></div>
+ </div>
+ <div class="chart"><canvas id="cSc"></canvas></div>
+</section>
+
+<section class="card">
+ <h2><span class="num">04</span>What-if sliders</h2>
+ <p class="d">Move the levers; outputs recompute live.</p>
+ <div class="sl"><label>Partner annual fee <span id="vFee"></span></label><input type="range" id="sFee" min="1" max="6" step="0.25" value="3"></div>
+ <div class="sl"><label>Retention rate <span id="vRet"></span></label><input type="range" id="sRet" min="15" max="55" step="1" value="35"></div>
+ <div class="sl"><label>Girls enrolled nationally <span id="vEnr"></span></label><input type="range" id="sEnr" min="2000" max="45000" step="500" value="12000"></div>
+ <div class="kpis">
+  <div class="kpi hot"><div class="v" id="oRev">-</div><div class="k">3-yr partner revenue</div></div>
+  <div class="kpi"><div class="v" id="oRet">-</div><div class="k">Retained girls</div></div>
+  <div class="kpi"><div class="v" id="o17">-</div><div class="k">Still playing at 17, with program</div></div>
+  <div class="kpi"><div class="v" id="oExtra">-</div><div class="k">Extra vs today at 17</div></div>
+ </div>
+ <div class="note" id="fNote"></div>
+</section>
+
+<section class="card">
+ <h2><span class="num">05</span>Girls still playing, age 10 to 17</h2>
+ <p class="d">Survival curve: today's dropout hazard vs the hazard with Her First Whistle.</p>
+ <div class="kpis">
+  <div class="kpi"><div class="v" id="s17b">-</div><div class="k">Still playing at 17, today</div></div>
+  <div class="kpi hot"><div class="v" id="s17p">-</div><div class="k">Still playing at 17, with program</div></div>
+ </div>
+ <div class="chart"><canvas id="cSurv"></canvas></div>
+</section>
+
+<section class="card span2">
+ <h2><span class="num">06</span>NWSL attendance regression</h2>
+ <p class="d">OLS of NWSL average regular-season attendance on trend and a post-WWC season dummy (2020, 2021 excluded).</p>
+ <div class="kpis five">
+  <div class="kpi hot"><div class="v" id="rB">-</div><div class="k">Post-WWC bump, fans</div></div>
+  <div class="kpi"><div class="v" id="rT">-</div><div class="k">Trend, fans per season</div></div>
+  <div class="kpi"><div class="v" id="rR2">-</div><div class="k">R-squared</div></div>
+  <div class="kpi"><div class="v" id="rAdj">-</div><div class="k">Adjusted R-squared</div></div>
+  <div class="kpi"><div class="v" id="rN">-</div><div class="k">Seasons (n)</div></div>
+ </div>
+ <div class="chart"><canvas id="cReg"></canvas></div>
+ <table id="tReg"><thead><tr><th>Term</th><th class="r">Coef</th><th class="r">SE</th><th class="r">t</th></tr></thead><tbody></tbody></table>
+ <div class="note">Directional evidence: the post-WWC bump points the right way but rests on two post-WWC seasons (2016, 2024) and is not significant at 5%. Small n; no controls for expansion, stadiums or broadcast deals.</div>
+</section>
+
+<section class="card span2 dark" id="mcCard">
+ <h2><span class="num">07</span>Monte Carlo: 3-yr incremental revenue</h2>
+ <p class="d" id="mcD">Distribution of simulated outcomes.</p>
+ <div class="kpis five">
+  <div class="kpi"><div class="v" id="mP10">-</div><div class="k">P10</div></div>
+  <div class="kpi hot"><div class="v" id="mP50">-</div><div class="k">P50</div></div>
+  <div class="kpi"><div class="v" id="mP90">-</div><div class="k">P90</div></div>
+  <div class="kpi"><div class="v" id="mMean">-</div><div class="k">Mean</div></div>
+  <div class="kpi"><div class="v" id="mP10M">-</div><div class="k">Chance above $10M</div></div>
+ </div>
+ <div class="chart"><canvas id="cMC"></canvas></div>
+</section>
+
+<section class="card span2">
+ <h2><span class="num">08</span>Sources</h2>
+ <ol class="src">
+  <li>WC26 final, 66.4M U.S. viewers on FOX plus Telemundo: Sports Video Group, Jul 24, 2026.</li>
+  <li>Women's World Cup final U.S. viewers: 25.4M (2015, 7pm ET), 14.3M (2019, noon ET), 2.21M (2023, 6am ET): Awful Announcing.</li>
+  <li>Atlanta hosted 8 WC26 matches, 544,516 fans: Atlanta Host Committee, Jul 16, 2026.</li>
+  <li>2027 FIFA Women's World Cup, Brazil, Jun 24 to Jul 25, 2027: FIFA.</li>
+  <li>USWNT daily pageviews, Jul to Oct 2019: Wikimedia REST API, en.wikipedia, accessed Oct 14, 2026.</li>
+  <li>51% of girls quit sport by end of puberty: Always Confidence and Puberty survey, reported by CNN, Jun 28, 2016.</li>
+  <li>NWSL average attendance 2013 to 2025: Wikipedia season pages, Soccer Stadium Digest, Soccer America, Sports Business Daily, ESPN, NWSL.</li>
+  <li>Scenario, slider and Monte Carlo outputs: team Excel model (PASS IT ON).</li>
+ </ol>
+ <div class="note"><span class="tag">Note</span> Assumptions labeled in the Excel model.</div>
+</section>
+
+</div>
+</div>
+<footer class="foot"><div class="stripes thin"></div><div class="in"><b>Pass It On</b>: The 100-Day Relay to Brazil 2027. Public data plus team model outputs.</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+var D = {"scen":{"rev":{"bear":5100000.0,"base":11199970.0,"bull":20001875.0},"partner":{"bear":4725000.0,"base":10199970.0,"bull":18126875.0},"coke":{"bear":375000.0,"base":1000000.0,"bull":1875000.0},"followers":{"bear":54000.0,"base":225000.0,"bull":720000.0},"views":{"bear":18000000.0,"base":45000000.0,"bull":90000000.0},"fy27":{"bear":1825000.0,"base":3800000.0,"bull":6500000.0},"fy28":{"bear":1637500.0,"base":3649000.0,"bull":6600000.0},"fy29":{"bear":1637500.0,"base":3750970.0,"bull":6901875.0}},"hl":{"half_life":4.27,"decay_rate_k_per_day":0.1623,"r_squared_log_fit":0.741,"days_to_90pct_gone":14.2,"peak_views_day0":331438,"baseline_views_per_day":1764,"peak_to_baseline_multiple":187.9},"hlSeries":[{"day":0,"date":"2019-07-07","views":331438,"fitted":50409},{"day":1,"date":"2019-07-08","views":132464,"fitted":43122},{"day":2,"date":"2019-07-09","views":52236,"fitted":36927},{"day":3,"date":"2019-07-10","views":50442,"fitted":31659},{"day":4,"date":"2019-07-11","views":37697,"fitted":27181},{"day":5,"date":"2019-07-12","views":22857,"fitted":23373},{"day":6,"date":"2019-07-13","views":17716,"fitted":20136},{"day":7,"date":"2019-07-14","views":14533,"fitted":17384},{"day":8,"date":"2019-07-15","views":11576,"fitted":15044},{"day":9,"date":"2019-07-16","views":9187,"fitted":13055},{"day":10,"date":"2019-07-17","views":6688,"fitted":11364},{"day":11,"date":"2019-07-18","views":5504,"fitted":9925},{"day":12,"date":"2019-07-19","views":4909,"fitted":8703},{"day":13,"date":"2019-07-20","views":3887,"fitted":7663},{"day":14,"date":"2019-07-21","views":5472,"fitted":6780},{"day":15,"date":"2019-07-22","views":3813,"fitted":6028},{"day":16,"date":"2019-07-23","views":3435,"fitted":5389},{"day":17,"date":"2019-07-24","views":4151,"fitted":4846},{"day":18,"date":"2019-07-25","views":3343,"fitted":4385},{"day":19,"date":"2019-07-26","views":2790,"fitted":3992},{"day":20,"date":"2019-07-27","views":2532,"fitted":3658},{"day":21,"date":"2019-07-28","views":2830,"fitted":3374},{"day":22,"date":"2019-07-29","views":2878,"fitted":3133},{"day":23,"date":"2019-07-30","views":5256,"fitted":2928},{"day":24,"date":"2019-07-31","views":3829,"fitted":2754},{"day":25,"date":"2019-08-01","views":2844,"fitted":2605},{"day":26,"date":"2019-08-02","views":2471,"fitted":2479},{"day":27,"date":"2019-08-03","views":3033,"fitted":2372},{"day":28,"date":"2019-08-04","views":6209,"fitted":2281},{"day":29,"date":"2019-08-05","views":2725,"fitted":2203},{"day":30,"date":"2019-08-06","views":2226,"fitted":2138},{"day":31,"date":"2019-08-07","views":2067,"fitted":2082},{"day":32,"date":"2019-08-08","views":2048,"fitted":2034},{"day":33,"date":"2019-08-09","views":1961,"fitted":1993},{"day":34,"date":"2019-08-10","views":1903,"fitted":1959},{"day":35,"date":"2019-08-11","views":2486,"fitted":1930},{"day":36,"date":"2019-08-12","views":2229,"fitted":1905},{"day":37,"date":"2019-08-13","views":2080,"fitted":1884},{"day":38,"date":"2019-08-14","views":1936,"fitted":1866},{"day":39,"date":"2019-08-15","views":2293,"fitted":1850},{"day":40,"date":"2019-08-16","views":1711,"fitted":1838},{"day":41,"date":"2019-08-17","views":1580,"fitted":1826},{"day":42,"date":"2019-08-18","views":1994,"fitted":1817}],"surv":[{"age":10,"base":1.0,"program":1.0},{"age":11,"base":0.9031,"program":0.9322},{"age":12,"base":0.8156,"program":0.869},{"age":13,"base":0.7366,"program":0.81},{"age":14,"base":0.6652,"program":0.7551},{"age":15,"base":0.6008,"program":0.7039},{"age":16,"base":0.5426,"program":0.6561},{"age":17,"base":0.49,"program":0.6116}],"s17":{"base":0.49,"program":0.6116},"reg":{"coef":[{"label":"Intercept","value":2876.8,"se":463.3,"t":6.21},{"label":"Trend (per season)","value":612.2,"se":59.5,"t":10.29},{"label":"Post-WWC season","value":629.3,"se":617.2,"t":1.02}],"r2":0.9337,"adj":0.9171,"n":11,"series":[{"season":2013,"actual":4270,"fitted":3489.0,"post_wwc":0},{"season":2014,"actual":4137,"fitted":4101.0,"post_wwc":0},{"season":2015,"actual":5046,"fitted":4713.0,"post_wwc":0},{"season":2016,"actual":5558,"fitted":5955.0,"post_wwc":1},{"season":2017,"actual":5083,"fitted":5938.0,"post_wwc":0},{"season":2018,"actual":6024,"fitted":6550.0,"post_wwc":0},{"season":2019,"actual":7386,"fitted":7162.0,"post_wwc":0},{"season":2022,"actual":7917,"fitted":8999.0,"post_wwc":0},{"season":2023,"actual":10869,"fitted":9611.0,"post_wwc":0},{"season":2024,"actual":11250,"fitted":10853.0,"post_wwc":1},{"season":2025,"actual":10669,"fitted":10836.0,"post_wwc":0}]},"mc":{"n_draws":5000,"mean":11770624.2909716,"p10":8579248.682026856,"p50":11671742.74852065,"p90":15130225.64330346,"prob_gt_10M":0.7538,"histogram":{"bin_edges":[5970416.10279032,6584248.035513921,7198079.96823752,7811911.90096112,8425743.83368472,9039575.76640832,9653407.699131921,10267239.63185552,10881071.56457912,11494903.49730272,12108735.430026319,12722567.36274992,13336399.29547352,13950231.22819712,14564063.160920719,15177895.09364432,15791727.02636792,16405558.95909152,17019390.89181512,17633222.82453872,18247054.75726232],"counts":[19,74,141,196,277,327,372,485,480,489,420,401,334,284,216,190,138,84,59,14]}}};
+(function(){
+var NAVY='#000D62',RED='#F20023',BLUE='#005CFF',GRAY='#B8BCCB',CYAN='#6FF3F9',SLATE='#8A90A8';
+var DK={ticks:{color:'#C9CEF0'},grid:{color:'rgba(255,255,255,.08)'},border:{color:'rgba(255,255,255,.25)'}};
+function $(id){return document.getElementById(id);}
+function set(id,v){var e=$(id);if(e)e.textContent=v;}
+function money(x){if(x==null||isNaN(x))return '-';var a=Math.abs(x);if(a>=1e6)return '$'+(x/1e6).toFixed(1)+'M';if(a>=1e3)return '$'+Math.round(x/1e3)+'K';return '$'+Math.round(x);}
+function cnt(x){if(x==null||isNaN(x))return '-';var a=Math.abs(x);if(a>=1e6)return (x/1e6).toFixed(1)+'M';if(a>=1e4)return Math.round(x/1e3)+'K';return Math.round(x).toLocaleString('en-US');}
+function pct(x){return (x*100).toFixed(1)+'%';}
+var hasC=typeof Chart!=='undefined';
+if(hasC){Chart.defaults.font.family='Archivo, Arial, Helvetica, sans-serif';Chart.defaults.color='#565C73';Chart.defaults.borderColor='rgba(0,13,98,.07)';Chart.defaults.maintainAspectRatio=false;Chart.defaults.plugins.legend.labels.boxWidth=12;}
+function mk(id,cfg){if(!hasC)return null;var c=$(id);if(!c)return null;try{return new Chart(c,cfg);}catch(e){return null;}}
+
+/* countdown */
+try{
+ var now=new Date(),start=new Date(2027,2,16),kick=new Date(2027,5,24),day=864e5;
+ if(now<start){set('cdDays',Math.ceil((start-now)/day));set('cdLbl','Days to relay start');}
+ else if(now<kick){set('cdDays',Math.ceil((kick-now)/day));set('cdLbl','Relay days left');}
+ else{set('cdDays','100');set('cdLbl','Relay days');}
+}catch(e){}
+
+/* 1 half-life */
+if(D.hl&&D.hlSeries){
+ set('hlV',D.hl.half_life.toFixed(1)+'-day');set('hl90',Math.round(D.hl.days_to_90pct_gone)+' days');
+ set('hlNote','Peak '+cnt(D.hl.peak_views_day0)+' views on final day, '+Math.round(D.hl.peak_to_baseline_multiple)+'x the later baseline of '+cnt(D.hl.baseline_views_per_day)+' per day. Decay rate k = '+D.hl.decay_rate_k_per_day+' per day; log-fit R-squared '+D.hl.r_squared_log_fit+'. By day 100 the bump is effectively zero: the relay must carry it.');
+ mk('cHL',{type:'line',data:{labels:D.hlSeries.map(function(r){return 'D'+r.day;}),datasets:[
+  {label:'Actual daily views',data:D.hlSeries.map(function(r){return r.views;}),borderColor:NAVY,backgroundColor:NAVY,pointRadius:2,borderWidth:2,tension:0},
+  {label:'Exponential fit',data:D.hlSeries.map(function(r){return r.fitted;}),borderColor:RED,borderDash:[6,4],pointRadius:0,borderWidth:2}]},
+  options:{plugins:{legend:{position:'bottom'}},scales:{y:{type:'logarithmic',ticks:{callback:function(v){var s=String(v);return (s.charAt(0)==='1'||s.charAt(0)==='5')?cnt(v):'';}}},x:{ticks:{maxTicksLimit:8}}}}});
+}
+
+/* 2 broadcast */
+mk('cTV',{type:'bar',data:{labels:['2015 (7pm ET)','2019 (noon ET)','2023 (6am ET)'],datasets:[{label:'WWC final U.S. viewers (M)',data:[25.4,14.3,2.21],backgroundColor:[NAVY,SLATE,RED]}]},
+ options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.raw+'M viewers';}}}},scales:{y:{beginAtZero:true,title:{display:true,text:'Millions'}}}}});
+
+/* 3 scenarios */
+var scChart=null;
+function scen(s){
+ var S=D.scen;if(!S)return;
+ set('kRev',money(S.rev[s]));set('kPart',money(S.partner[s]));set('kCoke',money(S.coke[s]));set('kFol',cnt(S.followers[s]));set('kViews',cnt(S.views[s]));
+ var vals=[S.fy27[s],S.fy28[s],S.fy29[s]];
+ if(scChart){scChart.data.datasets[0].data=vals;scChart.data.datasets[0].label=s.toUpperCase()+' case';scChart.update();}
+ else{scChart=mk('cSc',{type:'bar',data:{labels:['FY2027','FY2028','FY2029'],datasets:[{label:s.toUpperCase()+' case',data:vals,backgroundColor:['#FFFFFF','#FFFFFF',CYAN]}]},
+  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return money(c.raw);}}}},scales:{x:{ticks:{color:'#C9CEF0'},grid:{display:false},border:DK.border},y:{beginAtZero:true,suggestedMax:7500000,grid:DK.grid,border:DK.border,ticks:{color:'#C9CEF0',callback:function(v){return money(v);}}}}}});}
+ var bs=document.querySelectorAll('#tog button');for(var i=0;i<bs.length;i++){bs[i].className=bs[i].getAttribute('data-s')===s?'on':'';}
+}
+var tb=document.querySelectorAll('#tog button');for(var i=0;i<tb.length;i++){tb[i].addEventListener('click',function(){scen(this.getAttribute('data-s'));});}
+scen('base');
+
+/* 4 sliders */
+var ACT=(D.scen&&D.scen.coke)?D.scen.coke.base:1000000;
+var S17P=D.s17?D.s17.program:0.6116,S17B=D.s17?D.s17.base:0.49;
+function calc(){
+ var fee=parseFloat($('sFee').value)*1e6,ret=parseFloat($('sRet').value)/100,enr=parseFloat($('sEnr').value);
+ set('vFee','$'+(fee/1e6).toFixed(2)+'M');set('vRet',Math.round(ret*100)+'%');set('vEnr',enr.toLocaleString('en-US'));
+ set('oRev',money(fee*3+ACT));set('oRet',cnt(enr*ret));set('o17',cnt(enr*S17P));set('oExtra','+'+cnt(enr*(S17P-S17B)));
+}
+['sFee','sRet','sEnr'].forEach(function(id){var e=$(id);if(e)e.addEventListener('input',calc);});
+set('fNote','Formulas: 3-yr partner revenue = annual fee x 3 + base Coca-Cola activation from the model ('+money(ACT)+'). Retained girls = enrolled x retention rate. Still playing at 17 = enrolled x program survival to 17 ('+pct(S17P)+', annual dropout hazard '+(D.s17?'6.78%':'')+'). Extra vs today = enrolled x ('+pct(S17P)+' minus '+pct(S17B)+'). Model base: 12,000 enrolled FY2029, 35% retention.');
+calc();
+
+/* 5 survival */
+if(D.surv){
+ set('s17b',pct(S17B));set('s17p',pct(S17P));
+ mk('cSurv',{type:'line',data:{labels:D.surv.map(function(r){return 'Age '+r.age;}),datasets:[
+  {label:'With Her First Whistle',data:D.surv.map(function(r){return r.program*100;}),borderColor:RED,backgroundColor:'rgba(242,0,35,.08)',fill:true,borderWidth:3,pointRadius:3},
+  {label:'Today',data:D.surv.map(function(r){return r.base*100;}),borderColor:NAVY,borderWidth:3,pointRadius:3}]},
+  options:{plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:function(c){return c.dataset.label+': '+c.raw.toFixed(1)+'%';}}}},scales:{y:{min:40,max:100,ticks:{callback:function(v){return v+'%';}}}}}});
+}
+
+/* 6 regression */
+if(D.reg){
+ var cf=D.reg.coef||[];
+ cf.forEach(function(c){if(/Post/.test(c.label))set('rB','+'+Math.round(c.value));if(/Trend/.test(c.label))set('rT','+'+Math.round(c.value));});
+ set('rR2',D.reg.r2.toFixed(2));set('rAdj',D.reg.adj.toFixed(2));set('rN',D.reg.n);
+ var tbd=document.querySelector('#tReg tbody');
+ cf.forEach(function(c){var tr=document.createElement('tr');tr.innerHTML='<td>'+c.label+'</td><td class="r">'+c.value.toFixed(1)+'</td><td class="r">'+c.se.toFixed(1)+'</td><td class="r">'+c.t.toFixed(2)+'</td>';tbd.appendChild(tr);});
+ var ser=D.reg.series;
+ mk('cReg',{type:'bar',data:{labels:ser.map(function(r){return String(r.season);}),datasets:[
+  {type:'line',label:'Fitted',data:ser.map(function(r){return r.fitted;}),borderColor:SLATE,backgroundColor:SLATE,borderDash:[5,4],borderWidth:2,pointRadius:3,order:0},
+  {type:'bar',label:'Actual avg attendance',data:ser.map(function(r){return r.actual;}),backgroundColor:ser.map(function(r){return r.post_wwc?RED:NAVY;}),order:1}]},
+  options:{plugins:{legend:{position:'bottom'},tooltip:{callbacks:{afterLabel:function(c){return ser[c.dataIndex].post_wwc?'Post-WWC season':'';}}}},scales:{y:{beginAtZero:true,ticks:{callback:function(v){return cnt(v);}}}}}});
+}
+
+/* 7 monte carlo */
+if(D.mc&&D.mc.histogram){
+ var M=D.mc,h=M.histogram;
+ set('mP10',money(M.p10));set('mP50',money(M.p50));set('mP90',money(M.p90));set('mMean',money(M.mean));set('mP10M',Math.round(M.prob_gt_10M*100)+'%');
+ set('mcD',cnt(M.n_draws)+' simulated draws of the 3-yr incremental revenue. White bars fall between P10 and P90; red marks the P50 bin.');
+ var lab=[],col=[];
+ for(var j=0;j<h.counts.length;j++){var mid=(h.bin_edges[j]+h.bin_edges[j+1])/2;lab.push('$'+(mid/1e6).toFixed(1)+'M');col.push(mid<M.p10||mid>M.p90?'rgba(255,255,255,.22)':(mid>=h.bin_edges[j]&&M.p50>=h.bin_edges[j]&&M.p50<h.bin_edges[j+1]?RED:'#FFFFFF'));}
+ mk('cMC',{type:'bar',data:{labels:lab,datasets:[{label:'Draws',data:h.counts,backgroundColor:col,barPercentage:1,categoryPercentage:.95}]},
+  options:{plugins:{legend:{display:false}},scales:{x:{ticks:{maxTicksLimit:7,color:'#C9CEF0'},grid:{display:false},border:DK.border},y:{beginAtZero:true,grid:DK.grid,border:DK.border,ticks:{color:'#C9CEF0'},title:{display:true,text:'Draws',color:'#C9CEF0'}}}}});
+} else { var mc=$('mcCard'); if(mc) mc.style.display='none'; }
+})();
+</script>
+
+</body>
+</html>

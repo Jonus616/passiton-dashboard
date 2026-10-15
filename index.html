@@ -78,6 +78,40 @@ ol.src li::marker{color:var(--red);font-weight:900}
 footer.foot{background:var(--navy);color:#C9CEF0;margin-top:24px}
 footer.foot .in{max-width:1100px;margin:0 auto;padding:18px 16px 22px;font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:700}
 footer.foot b{color:var(--white)}
+/* layout and brand fixes */
+header.hero{overflow:hidden}
+.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.brand img{height:56px;width:auto;flex:none;display:block}
+.brand .eyebrow{min-width:0;overflow-wrap:anywhere}
+h1{font-size:clamp(30px,9vw,72px)}
+.hero .in{position:relative}
+.statwrap{position:relative;isolation:isolate}
+.ring{position:absolute;z-index:-1;pointer-events:none;opacity:.08;width:clamp(180px,48vw,300px);height:auto;right:-40px;top:50%;transform:translateY(-50%)}
+.count{position:relative;z-index:1}
+.count .box{display:flex;flex-direction:column;justify-content:space-between}
+.count .n{font-size:clamp(18px,5.6vw,36px);white-space:normal;overflow-wrap:anywhere}
+.count .l,.kpi .k,.leg{overflow-wrap:anywhere;min-width:0}
+.grid{align-items:stretch}
+.card{display:flex;flex-direction:column}
+.card>.chart{margin-top:auto}
+.kpis>.kpi{display:flex;flex-direction:column;justify-content:space-between}
+.kpi .v{font-size:clamp(18px,5vw,22px);overflow-wrap:anywhere;word-break:normal}
+.card.dark .kpi .v{font-size:clamp(20px,5.6vw,32px)}
+.kpis.five>.kpi:last-child{grid-column:1 / -1}
+.chart{height:auto;aspect-ratio:4 / 3;min-height:220px;max-height:320px}
+.sl label{align-items:baseline}
+.sl label>*{flex:none}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.foot .in{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.foot .in img{height:36px;width:auto;flex:none;display:block}
+.foot .in .svc{color:var(--white)}
+@media (min-width:800px){
+ .kpis.five>.kpi:last-child{grid-column:auto}
+ .chart{aspect-ratio:auto;height:300px;max-height:none}
+ .count .n{font-size:36px}
+ .kpi .v{font-size:22px}
+ .card.dark .kpi .v{font-size:clamp(22px,2.4vw,32px)}
+}
 @media (min-width:800px){
  h1{font-size:72px}
  .grid{grid-template-columns:1fr 1fr}
@@ -97,9 +131,10 @@ footer.foot b{color:var(--white)}
 
 
 <header class="hero"><div class="stripes"></div><div class="in">
- <div class="eyebrow">U.S. Soccer case competition 2026</div>
+ <div class="brand"><img src="crest_white.png" alt="U.S. Soccer crest"><div class="eyebrow">U.S. Soccer case competition 2026</div></div>
  <h1>Pass It On: <span>the live model</span></h1>
- <p class="sub">The 100-Day Relay to Brazil 2027. Momentum after WC26 decays unless someone takes the handoff. Relay runs Mar 16 to Jun 23, 2027; the Women's World Cup kicks off Jun 24.</p>
+ <p class="sub">The 100-Day Relay to Brazil 2027.</p>
+ <div class="statwrap"><img class="ring" src="ring_uswnt_white.png" alt="" aria-hidden="true">
  <div class="count">
   <div class="box stub"><div class="n" id="cdDays">100</div><div class="l" id="cdLbl">Relay days</div></div>
   <div class="box stub"><div class="n">Mar 16</div><div class="l">Leg 1 starts, 2027</div></div>
@@ -111,13 +146,14 @@ footer.foot b{color:var(--white)}
   <div class="leg"><b>Leg 3</b>Kotex: new feminine care partner</div>
   <div class="leg"><b>Leg 4</b>Coca-Cola Pass It On activation</div>
  </div>
+ </div>
 </div></header>
 
 <div class="wrap"><div class="grid">
 
 <section class="card">
  <h2><span class="num">01</span>Momentum half-life</h2>
- <p class="d">USWNT Wikipedia daily views after the 2019 final vs an exponential decay fit.</p>
+ <p class="d">USWNT daily views after the 2019 final.</p>
  <div class="kpis">
   <div class="kpi hot"><div class="v" id="hlV">4.3 days</div><div class="k">Half-life</div></div>
   <div class="kpi"><div class="v" id="hl90">14 days</div><div class="k">Until 90% of the bump is gone</div></div>
@@ -128,7 +164,7 @@ footer.foot b{color:var(--white)}
 
 <section class="card">
  <h2><span class="num">02</span>The broadcast proof</h2>
- <p class="d">Public data: kickoff time decides the audience. The WWC final in a U.S.-friendly window matters.</p>
+ <p class="d">Kickoff time decides the audience.</p>
  <div class="kpis">
   <div class="kpi hot"><div class="v">66.4M</div><div class="k">WC26 final, U.S. viewers, FOX plus Telemundo</div></div>
   <div class="kpi"><div class="v">544,516</div><div class="k">Fans at Atlanta's 8 WC26 matches</div></div>
@@ -138,7 +174,7 @@ footer.foot b{color:var(--white)}
 
 <section class="card span2 dark">
  <h2><span class="num">03</span>Scenario explorer</h2>
- <p class="d">Tap a case. Every number comes from the Excel model, FY2027 to FY2029.</p>
+ <p class="d">FY2027 to FY2029, from the Excel model.</p>
  <div class="toggle" id="tog">
   <button data-s="bear">Bear</button><button data-s="base" class="on">Base</button><button data-s="bull">Bull</button>
  </div>
@@ -154,7 +190,7 @@ footer.foot b{color:var(--white)}
 
 <section class="card">
  <h2><span class="num">04</span>What-if sliders</h2>
- <p class="d">Move the levers; outputs recompute live.</p>
+ 
  <div class="sl"><label>Partner annual fee <span id="vFee"></span></label><input type="range" id="sFee" min="1" max="6" step="0.25" value="3"></div>
  <div class="sl"><label>Retention rate <span id="vRet"></span></label><input type="range" id="sRet" min="15" max="55" step="1" value="35"></div>
  <div class="sl"><label>Girls enrolled nationally <span id="vEnr"></span></label><input type="range" id="sEnr" min="2000" max="45000" step="500" value="12000"></div>
@@ -169,7 +205,7 @@ footer.foot b{color:var(--white)}
 
 <section class="card">
  <h2><span class="num">05</span>Girls still playing, age 10 to 17</h2>
- <p class="d">Survival curve: today's dropout hazard vs the hazard with Her First Whistle.</p>
+ <p class="d">Today vs with Her First Whistle.</p>
  <div class="kpis">
   <div class="kpi"><div class="v" id="s17b">-</div><div class="k">Still playing at 17, today</div></div>
   <div class="kpi hot"><div class="v" id="s17p">-</div><div class="k">Still playing at 17, with program</div></div>
@@ -179,7 +215,7 @@ footer.foot b{color:var(--white)}
 
 <section class="card span2">
  <h2><span class="num">06</span>NWSL attendance regression</h2>
- <p class="d">OLS of NWSL average regular-season attendance on trend and a post-WWC season dummy (2020, 2021 excluded).</p>
+ <p class="d">Average attendance on trend plus a post-WWC dummy (2020, 2021 excluded).</p>
  <div class="kpis five">
   <div class="kpi hot"><div class="v" id="rB">-</div><div class="k">Post-WWC bump, fans</div></div>
   <div class="kpi"><div class="v" id="rT">-</div><div class="k">Trend, fans per season</div></div>
@@ -188,7 +224,7 @@ footer.foot b{color:var(--white)}
   <div class="kpi"><div class="v" id="rN">-</div><div class="k">Seasons (n)</div></div>
  </div>
  <div class="chart"><canvas id="cReg"></canvas></div>
- <table id="tReg"><thead><tr><th>Term</th><th class="r">Coef</th><th class="r">SE</th><th class="r">t</th></tr></thead><tbody></tbody></table>
+ <div class="tscroll"><table id="tReg"><thead><tr><th>Term</th><th class="r">Coef</th><th class="r">SE</th><th class="r">t</th></tr></thead><tbody></tbody></table></div>
  <div class="note">Directional evidence: the post-WWC bump points the right way but rests on two post-WWC seasons (2016, 2024) and is not significant at 5%. Small n; no controls for expansion, stadiums or broadcast deals.</div>
 </section>
 
@@ -222,7 +258,7 @@ footer.foot b{color:var(--white)}
 
 </div>
 </div>
-<footer class="foot"><div class="stripes thin"></div><div class="in"><b>Pass It On</b>: The 100-Day Relay to Brazil 2027. Public data plus team model outputs.</div></footer>
+<footer class="foot"><div class="stripes thin"></div><div class="in"><img src="crest_color.png" alt="U.S. Soccer crest"><span><b class="svc">In Service to Soccer</b><br>Pass It On: The 100-Day Relay to Brazil 2027</span></div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
@@ -314,7 +350,7 @@ if(D.reg){
 if(D.mc&&D.mc.histogram){
  var M=D.mc,h=M.histogram;
  set('mP10',money(M.p10));set('mP50',money(M.p50));set('mP90',money(M.p90));set('mMean',money(M.mean));set('mP10M',Math.round(M.prob_gt_10M*100)+'%');
- set('mcD',cnt(M.n_draws)+' simulated draws of the 3-yr incremental revenue. White bars fall between P10 and P90; red marks the P50 bin.');
+ set('mcD',cnt(M.n_draws)+' draws. Red marks the P50 bin.');
  var lab=[],col=[];
  for(var j=0;j<h.counts.length;j++){var mid=(h.bin_edges[j]+h.bin_edges[j+1])/2;lab.push('$'+(mid/1e6).toFixed(1)+'M');col.push(mid<M.p10||mid>M.p90?'rgba(255,255,255,.22)':(mid>=h.bin_edges[j]&&M.p50>=h.bin_edges[j]&&M.p50<h.bin_edges[j+1]?RED:'#FFFFFF'));}
  mk('cMC',{type:'bar',data:{labels:lab,datasets:[{label:'Draws',data:h.counts,backgroundColor:col,barPercentage:1,categoryPercentage:.95}]},

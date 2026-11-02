@@ -32,7 +32,8 @@ h1 span{display:block;color:var(--red)}
 .count .n{font-family:var(--disp);font-stretch:125%;font-variation-settings:"wdth" 125;font-size:24px;font-weight:900;color:var(--cyan);line-height:1;text-transform:uppercase;white-space:nowrap}
 .count .l{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#C9CEF0;font-weight:700;margin-top:10px;padding-top:8px;border-top:2px dashed rgba(255,255,255,.35)}
 .legs{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:16px;background:rgba(255,255,255,.14);border-top:2px solid var(--red)}
-.leg{padding:10px 10px 12px;background:var(--navy);font-size:13px;color:#E4E7F7}
+.leg{padding:10px 10px 12px;background:var(--navy);font-size:13px;color:#E4E7F7;display:flex;align-items:center;gap:10px}
+.leg img{width:48px;height:48px;flex:none;display:block}
 .leg b{display:block;font-family:var(--disp);font-stretch:125%;font-variation-settings:"wdth" 125;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:900;margin-bottom:2px}
 .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
 .card{background:var(--white);border-top:3px solid var(--red);padding:20px 16px;min-width:0}
@@ -175,17 +176,10 @@ h1{font-size:clamp(30px,9vw,72px)}
   <div class="box stub"><div class="n">Jun 24</div><div class="l">WWC 2027 kickoff</div></div>
  </div>
  <div class="legs">
-  <div class="leg"><b>Leg 1</b>Her First Whistle: girls' program, Atlanta then national</div>
-  <div class="leg"><b>Leg 2</b>The Handoff: creator relay for Female Gen Z</div>
-  <div class="leg"><b>Leg 3</b>Kotex: new feminine care partner</div>
-  <div class="leg"><b>Leg 4</b>Coca-Cola Pass It On activation</div>
- </div>
- <div class="relay" aria-label="The fan relay: play, watch, share, buy, through the female lens">
-  <img class="hub" src="assets/hub_female_lens.png" alt="Female lens hub">
-  <img class="lg" src="assets/leg_play.png" alt="Play"><span class="ar" aria-hidden="true">&rsaquo;</span>
-  <img class="lg" src="assets/leg_watch.png" alt="Watch"><span class="ar" aria-hidden="true">&rsaquo;</span>
-  <img class="lg" src="assets/leg_share.png" alt="Share"><span class="ar" aria-hidden="true">&rsaquo;</span>
-  <img class="lg" src="assets/leg_buy.png" alt="Buy">
+  <div class="leg"><img src="assets/leg_play.png" alt="Play medallion"><div><b>Leg 1, play</b>Her First Whistle puts girls in free seasons, Atlanta first, then national</div></div>
+  <div class="leg"><img src="assets/leg_watch.png" alt="Watch medallion"><div><b>Leg 2, watch</b>The Handoff passes the ball from players to the creators Gen Z women follow</div></div>
+  <div class="leg"><img src="assets/leg_buy.png" alt="Buy medallion"><div><b>Leg 3, buy</b>Kotex becomes U.S. Soccer's first period-care partner</div></div>
+  <div class="leg"><img src="assets/leg_share.png" alt="Share medallion"><div><b>Leg 4, share</b>Coca-Cola cans and watch parties lead girls to a pitch</div></div>
  </div>
  </div>
 </div></header>
